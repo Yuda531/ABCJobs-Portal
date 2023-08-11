@@ -4,6 +4,7 @@ import com.abc.model.Education;
 import com.abc.model.ForumThreads;
 import com.abc.repository.ForumThreadsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,7 +23,7 @@ public class ForumThreadsService {
     }
 
     public List<ForumThreads> getAllPosts() {
-        return threadRepository.findAll();
+        return threadRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
 }
