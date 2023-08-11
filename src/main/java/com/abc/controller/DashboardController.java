@@ -138,12 +138,11 @@ public class DashboardController {
 
     @PostMapping("/create_thread")
     public String createThread(@ModelAttribute ForumThreads forumThread, @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
-                               @RequestParam("postTitle") String postTitle, @RequestParam("postBody") String postBody,
+                               @RequestParam("postBody") String postBody,
                                Model model, HttpSession session) {
 
         Long userId = (Long) session.getAttribute("userId");
 
-        forumThread.setTitle(postTitle);
         forumThread.setBody(postBody);
 
         try {

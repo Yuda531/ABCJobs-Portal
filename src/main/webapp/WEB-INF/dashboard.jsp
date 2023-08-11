@@ -59,7 +59,7 @@
                                 <div class="modal-content">
                                     <form action="/create_thread" method="post" enctype="multipart/form-data">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="postModalLabel">Write a Post</h5>
+                                            <h5 class="modal-title" id="postModalLabel">Write a Thread</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -68,12 +68,8 @@
                                                 <input type="file" name="imageFile" class="form-control" id="chooseFile">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="postTitle" class="form-label">Title</label>
-                                                <input type="text" name="postTitle" class="form-control" id="postTitle">
-                                            </div>
-                                            <div class="mb-3">
                                                 <label for="postBody" class="form-label">Body</label>
-                                                <textarea name="postBody" class="form-control" id="postBody" rows="4"></textarea>
+                                                <textarea name="postBody" placeholder="What is Happening" class="form-control" id="postBody" rows="4"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -91,12 +87,11 @@
                         <div class="border rounded-3 mb-3 px-3 bg-white shadow">
                             <div class="d-flex align-items-center gap-2 py-3">
                                     <span class="px-3 py-2 rounded-circle border bg-light">${forumThread.userDetails.getFirstName().charAt(0)}${forumThread.userDetails.getLastName().charAt(0)}</span>
-                                    <a href="" class="text-decoration-none fs-5">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
+                                    <a href="" class="text-decoration-none fs-5 fw-bold">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
                                     <small class="ms-auto">${forumThread.getCreatedAt()}</small>
                             </div>
                                 <div class="">
-                                    <p class="fw-bold fs-4">${forumThread.getTitle()}</p>
-                                       <p class="fs-7 text-justify">${forumThread.getBody()}</p>
+                                       <p class="fs-5">${forumThread.getBody()}</p>
                                     <c:if test="${not empty forumThread.image}">
                                        <img src="data:image/jpeg;base64,${forumThread.getPostImageDataBase64()}" class="img-fluid">
                                     </c:if>

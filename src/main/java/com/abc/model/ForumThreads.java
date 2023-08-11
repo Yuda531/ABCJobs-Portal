@@ -25,8 +25,6 @@ public class ForumThreads {
     @JoinColumn(name = "user_details_id") // Menggunakan kolom user_details_id sebagai foreign key
     private UserDetails userDetails;
 
-    @Column(name = "title")
-    private String title;
 
     @Column(name = "body")
     private String body;
