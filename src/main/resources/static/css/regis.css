@@ -1,0 +1,19 @@
+
+
+.form-right {
+    box-shadow: 15px 17px 15px 0px rgba(0, 0, 0, 0.41);
+    -webkit-box-shadow: 15px 17px 15px 0px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 15px 17px 15px 0px rgba(0, 0, 0, 0.41);
+
+}
+
+.top-su {
+    display: flex; 
+    align-items: start; 
+    justify-content: space-between;
+}
+
+.btn-primary {
+    padding: 10px 80px 10px 80px;
+}
+
