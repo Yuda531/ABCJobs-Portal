@@ -1,4 +1,4 @@
-package com.abc;
+package com.abc.utils;
 
 import java.util.Base64;
 

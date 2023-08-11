@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import com.abc.Base64Util;
+import com.abc.utils.Base64Util;
 
 
 import javax.persistence.*;
