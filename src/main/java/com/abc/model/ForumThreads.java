@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import com.abc.Base64Util;
+
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -36,4 +39,8 @@ public class ForumThreads {
     private LocalDateTime createdAt;
 
 
+
+    public String getPostImageDataBase64() {
+        return Base64Util.encodeBase64(this.image);
+    }
 }

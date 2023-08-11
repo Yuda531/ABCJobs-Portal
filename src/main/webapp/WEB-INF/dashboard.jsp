@@ -96,12 +96,10 @@
                             </div>
                                 <div class="">
                                     <p class="fw-bold fs-4">${forumThread.getTitle()}</p>
-                                    <c:choose>
-                                        <c:when test="${forumThread.getImage() != null}">
-                                            <img src="data:image/jpeg;base64,${forumThread.getImage()}" class="img-fluid">
-                                        </c:when>
-                                    </c:choose>
-                                    <p class="fs-7 text-justify">${forumThread.getBody()}</p>
+                                       <p class="fs-7 text-justify">${forumThread.getBody()}</p>
+                                    <c:if test="${not empty forumThread.image}">
+                                       <img src="data:image/jpeg;base64,${forumThread.getPostImageDataBase64()}" class="img-fluid">
+                                    </c:if>
                                 </div>
                             <div class="d-flex align-items-center gap-2 py-3">
                                 <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-like">

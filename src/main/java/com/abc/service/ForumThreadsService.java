@@ -25,7 +25,4 @@ public class ForumThreadsService {
         return threadRepository.findAll();
     }
 
-    public List<ForumThreads> getThreadsByUserDetailsId(String udID) {
-        return threadRepository.getThreadsByUserDetailsId(udID);
-    }
 }
