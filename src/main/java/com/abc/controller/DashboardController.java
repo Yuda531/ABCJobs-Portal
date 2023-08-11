@@ -173,7 +173,9 @@ public class DashboardController {
     public String showAllPosts(Model model) {
         List<ForumThreads> posts = forumThreadsService.getAllPosts(); // Ambil semua post dari service
         model.addAttribute("posts", posts); // Kirim data post ke halaman JSP
-        return "posts"; // Nama halaman JSP yang akan ditampilkan
+
+        System.out.println(posts);
+        return "dashboard"; // Nama halaman JSP yang akan ditampilkan
     }
 
 
@@ -194,7 +196,7 @@ public class DashboardController {
 
         model.addAttribute("experiences", experienceService.getExperienceByUserDetailsId(userId));
         model.addAttribute("education", educationService.getEducationByUserDetailsId(userId));
-        model.addAttribute("threads",forumThreadsService.getThreadsByUserDetailsId(userId));
+        model.addAttribute("posts",forumThreadsService.getAllPosts());
     }
 
 

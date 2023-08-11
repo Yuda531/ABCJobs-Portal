@@ -9,13 +9,12 @@
             <div class="row">
                 <div class="profile col-lg-12">
                     <div class="card">
-                        <div class="img-fluid rounded-3 text-light d-flex flex-row"
-                            style="height: 200px; background-image: url(img/bg.jpg); background-repeat: no-repeat; background-size: cover;">
-                            <div class="col-2 border border-light rounded-circle align-self-stretch text-center fs-1 d-flex align-items-center justify-content-center bg-primary bg-gradient text-white" style="width: 150px; height: 150px; margin-top: 175px; margin-left:25px; z-index: 1;">
-					            <span>${f}</span>
-					            <span>${l}</span>
-					        </div>
-                        </div>
+                        <div class="img-fluid rounded-3 text-light d-flex flex-row" style="background-image: url(img/backprofile.png); background-repeat: no-repeat; background-size: cover;">
+                                                    <div class="col-2 border border-light rounded-circle align-self-stretch text-center fs-1 d-flex align-items-center justify-content-center bg-secondary bg-gradient text-white" style="width: 150px; height: 150px; margin-top: 195px; margin-left: 25px; z-index: 1; position: relative; top: 50px;">
+                                                        <span>${f}</span>
+                                                        <span>${l}</span>
+                                                    </div>
+                                                </div>
                         <div class="p-4 text-black bg-light rounded-3">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="myName " style="margin-left: 165px;">

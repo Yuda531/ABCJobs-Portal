@@ -28,9 +28,9 @@
 		          <td>${user.getPhoneNumber()}</td>
 		          <td>
 		            <div class="d-flex flex-wrap justify-content-between">
-		              <a href="user-profile/${user.getUserId()}" class="text-decoration-none btn btn-outline-secondary">Edit</a>
-		              <a href="" class="text-decoration-none btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${user.getUserId()}">Delete</a>
-		              <a href="" class="text-decoration-none btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailModal${user.getUserId()}">Detail</a>
+		              <a href="user-profile/${user.getUserId()}" class="text-decoration-none btn btn-outline-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+		              <a href="" class="text-decoration-none btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${user.getUserId()}"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+		              <a href="" class="text-decoration-none btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailModal${user.getUserId()}"><i class="fa fa-eye" aria-hidden="true"></i>Detail</a>
 		            </div>
 		          </td>
 		        </tr>

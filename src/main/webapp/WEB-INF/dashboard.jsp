@@ -2,6 +2,7 @@
 <jsp:include page="header3.jsp">
 	<jsp:param value="Dashboard" name="HTMLtitle" />
 </jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <section class="profile pt-5 pb-5" style="background-color: #eee;">
 	<div class="container">
@@ -86,17 +87,22 @@
 
 					</div>
 
-					<c:forEach var="post" items="${posts}">
+                    <c:forEach var="forumThread" items="${posts}">
                         <div class="border rounded-3 mb-3 px-3 bg-white shadow">
                             <div class="d-flex align-items-center gap-2 py-3">
-                                <span class="px-3 py-2 rounded-circle border bg-light">${post.user.initials}</span>
-                                <a href="" class="text-decoration-none fs-5">${post.user.name}</a>
-                                <small class="ms-auto">${post.createdAt}</small>
+                                    <span class="px-3 py-2 rounded-circle border bg-light">${forumThread.userDetails.getFirstName().charAt(0)}${forumThread.userDetails.getLastName().charAt(0)}</span>
+                                    <a href="" class="text-decoration-none fs-5">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
+                                    <small class="ms-auto">${forumThread.getCreatedAt()}</small>
                             </div>
-                            <div class="">
-                                <p class="fw-bold fs-4">${post.title}</p>
-                                <p class="fs-7 text-justify">${post.body}</p>
-                            </div>
+                                <div class="">
+                                    <p class="fw-bold fs-4">${forumThread.getTitle()}</p>
+                                    <c:choose>
+                                        <c:when test="${forumThread.getImage() != null}">
+                                            <img src="data:image/jpeg;base64,${forumThread.getImage()}" class="img-fluid">
+                                        </c:when>
+                                    </c:choose>
+                                    <p class="fs-7 text-justify">${forumThread.getBody()}</p>
+                                </div>
                             <div class="d-flex align-items-center gap-2 py-3">
                                 <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-like">
                                     <i class='bx bx-like'></i> Like
