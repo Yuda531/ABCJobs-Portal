@@ -53,6 +53,13 @@ public class SearchController {
         return new ModelAndView("result");
     }
 
+    @GetMapping("/profileThread") // view other profile
+    public ModelAndView viewProfile(@RequestParam("uId") String uId, Model model, HttpSession session) throws Exception {
+        this.setModel(model, session, uId);
+        return new ModelAndView("result");
+    }
+
+
     private void setModel(Model model, HttpSession session, String uId) {
         String userId = String.valueOf(uId);
         String[] userDetails = ud.getDetailsById(userId).replaceAll("null", "-").split(",");

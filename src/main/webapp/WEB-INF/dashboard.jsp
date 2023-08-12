@@ -88,7 +88,7 @@
                         <div class="border rounded-3 mb-3 px-3 bg-white shadow">
                             <div class="d-flex align-items-center gap-2 py-3">
                                     <span class="px-3 py-2 rounded-circle border bg-light">${forumThread.userDetails.getFirstName().charAt(0)}${forumThread.userDetails.getLastName().charAt(0)}</span>
-                                    <a href="" class="text-decoration-none fs-5 fw-bold">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
+                                    <a href="profileThread?uId=${forumThread.userDetails.getUserId()}" class="text-decoration-none fs-5 fw-bold">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
                                     <small class="ms-auto text-secondary">${TimeAgoFormatter.format(forumThread.getCreatedAt())}</small>
                             </div>
                                 <div class="">
