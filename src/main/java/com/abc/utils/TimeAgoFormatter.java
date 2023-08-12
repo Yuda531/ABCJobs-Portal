@@ -11,7 +11,7 @@ public class TimeAgoFormatter {
         long seconds = duration.getSeconds();
 
         if (seconds < 60) {
-            return seconds + " A few seconds ago";
+            return seconds + " seconds ago";
         } else if (seconds < 60 * 60) {
             long minutes = TimeUnit.SECONDS.toMinutes(seconds);
             return minutes + " minutes ago";
