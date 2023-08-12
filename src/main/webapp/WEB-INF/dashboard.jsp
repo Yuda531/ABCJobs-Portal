@@ -3,6 +3,7 @@
 	<jsp:param value="Dashboard" name="HTMLtitle" />
 </jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.abc.utils.TimeAgoFormatter" %>
 
 <section class="profile pt-5 pb-5" style="background-color: #eee;">
 	<div class="container">
@@ -88,7 +89,7 @@
                             <div class="d-flex align-items-center gap-2 py-3">
                                     <span class="px-3 py-2 rounded-circle border bg-light">${forumThread.userDetails.getFirstName().charAt(0)}${forumThread.userDetails.getLastName().charAt(0)}</span>
                                     <a href="" class="text-decoration-none fs-5 fw-bold">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
-                                    <small class="ms-auto">${forumThread.getCreatedAt()}</small>
+                                    <small class="ms-auto text-secondary">${TimeAgoFormatter.format(forumThread.getCreatedAt())}</small>
                             </div>
                                 <div class="">
                                        <p class="fs-5">${forumThread.getBody()}</p>
