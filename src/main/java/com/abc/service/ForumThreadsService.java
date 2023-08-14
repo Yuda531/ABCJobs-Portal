@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,6 +25,11 @@ public class ForumThreadsService {
 
     public List<ForumThreads> getAllPosts() {
         return threadRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
+    }
+
+    public ForumThreads getForumThreadById(Long threadId) {
+        Optional<ForumThreads> forumThreadOptional = threadRepository.findById(threadId);
+        return forumThreadOptional.orElse(null); // Return null if not found
     }
 
 }

@@ -9,6 +9,7 @@ import com.abc.utils.Base64Util;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -35,6 +36,9 @@ public class ForumThreads {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "parentForumThread", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentThreads> commentThreads;
 
 
 

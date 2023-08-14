@@ -20,12 +20,15 @@ public class TimeAgoFormatter {
             return hours + " hours ago";
         } else if (seconds < 60 * 60 * 24 * 7) {
             long days = TimeUnit.SECONDS.toDays(seconds);
+            return days + (days == 1 ? " day" : " days") + " ago";
+        } else if (seconds < 60 * 60 * 24 * 30) {
+            long days = TimeUnit.SECONDS.toDays(seconds);
             long weeks = days / 7;
-            return weeks + " weeks ago";
+            return weeks + (weeks == 1 ? " week" : " weeks") + " ago";
         } else {
             long days = TimeUnit.SECONDS.toDays(seconds);
             long months = days / 30;
-            return months + " months ago";
+            return months + (months == 1 ? " month" : " months") + " ago";
         }
     }
 }

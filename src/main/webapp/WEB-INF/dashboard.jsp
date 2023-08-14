@@ -3,7 +3,7 @@
 	<jsp:param value="Dashboard" name="HTMLtitle" />
 </jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.abc.utils.TimeAgoFormatter" %>
+<%@ page import="com.abc.utils.TimeAgoFormatter"%>
 
 <section class="profile pt-5 pb-5" style="background-color: #eee;">
 	<div class="container">
@@ -12,10 +12,13 @@
 			if (session.getAttribute("isLogin") != null && session.getAttribute("roleId").toString().equals("1")) {
 			%>
 			<div class="row mb-5 p-3 rounded shadow bg-primary">
-			  <div class="d-flex flex-lg-row justify-content-between align-items-center">
-			    <h3 class="text-white">Welcome Back, ${fullName} !</h3>
-			    <a href="admin" class="btn btn-success border-1 border-white" style="width: max-content;">Admin Home <i class="fa fa-arrow-circle-right ps-5" style="font-size: 20px"></i></a>
-			  </div>
+				<div
+					class="d-flex flex-lg-row justify-content-between align-items-center">
+					<h3 class="text-white">Welcome Back, ${fullName} !</h3>
+					<a href="admin" class="btn btn-success border-1 border-white"
+						style="width: max-content;">Admin Home <i
+						class="fa fa-arrow-circle-right ps-5" style="font-size: 20px"></i></a>
+				</div>
 			</div>
 			<%
 			}
@@ -46,67 +49,104 @@
 						<div class="d-flex align-items-center gap-2 py-3">
 							<a href="profile"
 								class="px-3 py-2 rounded-circle border border-primary bg-light text-decoration-none">${f}${l}</a>
-							<input
-                              type="text"
-                              class="form-control rounded-pill border-2"
-                              placeholder="Write a Post"
-                              onclick="openPostModal()"
-                            />
+							<input type="text" class="form-control rounded-pill border-2"
+								placeholder="Write a Post" onclick="openPostModal()" />
 						</div>
 
-                        <!-- Modal Post -->
-                        <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="/create_thread" method="post" enctype="multipart/form-data">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="postModalLabel">Write a Thread</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="chooseImage" class="form-label">Choose Image</label>
-                                                <input type="file" name="imageFile" class="form-control" id="chooseFile">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="postBody" class="form-label">Body</label>
-                                                <textarea name="postBody" placeholder="What is Happening" class="form-control" id="postBody" rows="4"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button id="postButton" type="submit" class="btn btn-primary">Post</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+						<!-- Modal Post -->
+						<div class="modal fade" id="postModal" tabindex="-1"
+							aria-labelledby="postModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<form action="/create_thread" method="post"
+										enctype="multipart/form-data">
+										<div class="modal-header">
+											<h5 class="modal-title" id="postModalLabel">Write a
+												Thread</h5>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<div class="mb-3">
+												<label for="chooseImage" class="form-label">Choose
+													Image</label> <input type="file" name="imageFile"
+													class="form-control" id="chooseFile">
+											</div>
+											<div class="mb-3">
+												<label for="postBody" class="form-label">Body</label>
+												<textarea name="postBody" placeholder="What is Happening"
+													class="form-control" id="postBody" rows="4"></textarea>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">Close</button>
+											<button id="postButton" type="submit" class="btn btn-primary">Post</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 
 					</div>
 
+					<!-- Thread section -->
                     <c:forEach var="forumThread" items="${posts}">
                         <div class="border rounded-3 mb-3 px-3 bg-white shadow">
+                            <!-- Thread header -->
                             <div class="d-flex align-items-center gap-2 py-3">
-                                    <span class="px-3 py-2 rounded-circle border bg-light">${forumThread.userDetails.getFirstName().charAt(0)}${forumThread.userDetails.getLastName().charAt(0)}</span>
-                                    <a href="profileThread?uId=${forumThread.userDetails.getUserId()}" class="text-decoration-none fs-5 fw-bold">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
-                                    <small class="ms-auto text-secondary">${TimeAgoFormatter.format(forumThread.getCreatedAt())}</small>
+                                <span class="px-3 py-2 rounded-circle border bg-light">${forumThread.userDetails.getFirstName().charAt(0)}${forumThread.userDetails.getLastName().charAt(0)}</span>
+                                <a href="profileThread?uId=${forumThread.userDetails.getUserId()}"
+                                   class="text-decoration-none fs-5 fw-bold">${forumThread.userDetails.getFirstName()} ${forumThread.userDetails.getLastName()}</a>
+                                <small class="ms-auto text-secondary">${TimeAgoFormatter.format(forumThread.getCreatedAt())}</small>
                             </div>
-                                <div class="">
-                                       <p class="fs-5">${forumThread.getBody()}</p>
-                                    <c:if test="${not empty forumThread.image}">
-                                       <img src="data:image/jpeg;base64,${forumThread.getPostImageDataBase64()}" class="img-fluid">
-                                    </c:if>
-                                </div>
+                            <!-- Thread body -->
+                            <div class="">
+                                <p class="fs-5">${forumThread.getBody()}</p>
+                                <c:if test="${not empty forumThread.image}">
+                                    <img src="data:image/jpeg;base64,${forumThread.getPostImageDataBase64()}" class="img-fluid">
+                                </c:if>
+                            </div>
+                            <!-- Like and Comment buttons -->
                             <div class="d-flex align-items-center gap-2 py-3">
                                 <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-like">
                                     <i class='bx bx-like'></i> Like
                                 </a>
-                                <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-comment">
+                                <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-toggle-comments">
                                     <i class='bx bx-message-square-dots'></i> Comments
                                 </a>
                             </div>
+                            <!-- Comment section -->
+                            <div class="comment-section border rounded-3 mb-3 px-3 pt-3 bg-white shadow mt-3">
+                                <!-- Comment form -->
+                                <form class="add-comment-form d-flex align-items-center my-3" action="add_comment" method="post">
+                                    <a href="profile" class="px-3 py-2 rounded-circle border border-primary bg-light text-decoration-none">${f}${l}</a>
+                                    <textarea name="comment" placeholder="Add a comment"
+                                                  class="form-control rounded-pill border-2 flex-grow-1 ms-2 me-2" rows="1"></textarea>
+                                    <input type="hidden" name="threadId" value="${forumThread.threadId}" />
+                                    <button type="submit" class="btn btn-primary rounded-pill">Post</button>
+                                </form>
+                                <!-- Existing comments -->
+                                <div class="existing-comments">
+                                    <c:forEach var="comment" items="${forumThread.getCommentThreads()}">
+                                        <div class="comment ">
+                                            <div class="comment-content mt-4 mb-4">
+                                                <div class="d-flex align-items-center bg-light rounded-pill p-2">
+                                                    <a href="profileThread?uId=${comment.userDetails.getUserId()}"
+                                                       class="text-decoration-none px-3 py-2 me-2 rounded-circle border bg-light">${comment.userDetails.getFirstName().charAt(0)}${comment.userDetails.getLastName().charAt(0)}</a>
+                                                    <div class="d-flex justify-content-between" style="width: 90%;">
+                                                       <span>${comment.comment}</span>   <small class="text-secondary">${TimeAgoFormatter.format(comment.dateComment)}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
                         </div>
                     </c:forEach>
+
+
 				</div>
 
 				<!-- suggestion to follow -->

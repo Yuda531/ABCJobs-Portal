@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="search.css">
     <title><%= request.getParameter("HTMLtitle") !=null ? request.getParameter("HTMLtitle") : "Welcome" %></title>
+    <style>
+        .comment-section {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light p-0 shadow mb-1 sticky-top">

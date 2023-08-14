@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -31,6 +32,9 @@ public class DashboardController {
 
     @Autowired
     private ForumThreadsService forumThreadsService;
+
+    @Autowired
+    private CommentThreadsService commentThreadsService;
 
     @Autowired
     private ExperienceService experienceService;
@@ -177,6 +181,42 @@ public class DashboardController {
         return "dashboard"; // Nama halaman JSP yang akan ditampilkan
     }
 
+    @PostMapping("/add_comment")
+    public String addComment(
+            @RequestParam("comment") String commentText,
+            @RequestParam("threadId") Long threadId,
+            Model model, HttpSession session){
+
+        Long userId = (Long) session.getAttribute("userId");
+
+        CommentThreads comment = new CommentThreads();
+        comment.setUserDetails(ud.getDetailsById(userId));
+        comment.setDateComment(LocalDateTime.now());
+        comment.setComment(commentText);
+
+        ForumThreads forumThread = forumThreadsService.getForumThreadById(threadId);
+        comment.setParentForumThread(forumThread);
+
+        commentThreadsService.createComment(comment);
+
+        setModel(model, session);
+
+        String msg = "Comment added successfully";
+        model.addAttribute("message", msg);
+
+        return "dashboard";
+    }
+
+
+    @GetMapping("/getComment")
+    public String showAllComment(Model model) {
+        List<CommentThreads> comments = commentThreadsService.getAllComment(); // Ambil semua post dari service
+        model.addAttribute("comments", comments); // Kirim data post ke halaman JSP
+
+        System.out.println(comments);
+        return "dashboard"; // Nama halaman JSP yang akan ditampilkan
+    }
+
 
 
     private void setModel(Model model, HttpSession session) {
@@ -196,6 +236,8 @@ public class DashboardController {
         model.addAttribute("experiences", experienceService.getExperienceByUserDetailsId(userId));
         model.addAttribute("education", educationService.getEducationByUserDetailsId(userId));
         model.addAttribute("posts",forumThreadsService.getAllPosts());
+        model.addAttribute("comments", commentThreadsService.getAllComment());
+
     }
 
 
