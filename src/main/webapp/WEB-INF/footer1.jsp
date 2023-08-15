@@ -47,25 +47,14 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-  $(document).ready(function() {
-	// Mengubah warna tombol comment menjadi abu saat diklik
-	    $(".btn-comment").click(function(event) {
-	      event.preventDefault();
-	      $(this).toggleClass("btn-outline-secondary btn-outline-secondary");
-	    });
-    // Mengubah warna tombol Like menjadi merah saat diklik
-    $(".btn-like").click(function(event) {
-      event.preventDefault();
-      $(this).toggleClass("btn-outline-secondary btn-outline-primary");
-    });
+        $(document).ready(function() {
+            $(".btn-like").click(function(event) {
+                event.preventDefault(); // Mencegah tindakan default dari tautan
+                $(this).toggleClass("btn-primary");
+            });
+        });
+    </script>
 
-    // Mengubah warna tombol Save menjadi hijau saat diklik
-    $(".btn-save").click(function(event) {
-      event.preventDefault();
-      $(this).toggleClass("btn-outline-secondary btn-outline-success");
-    });
-  });
-</script>
 	<script>
   // mencari semua tombol follow di halaman
   const followButtons = document.querySelectorAll('.follow-btn');

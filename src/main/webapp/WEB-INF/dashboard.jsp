@@ -107,13 +107,14 @@
                                     <img src="data:image/jpeg;base64,${forumThread.getPostImageDataBase64()}" class="img-fluid">
                                 </c:if>
                             </div>
+                            <hr>
                             <!-- Like and Comment buttons -->
-                            <div class="d-flex align-items-center gap-2 py-3">
-                                <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-like">
+                            <div class="d-flex align-items-center gap-2 pb-3">
+                                <a href="" class="d-flex align-items-center gap-2 btn btn-like" style="border: none;">
                                     <i class='bx bx-like'></i> Like
                                 </a>
-                                <a href="" class="d-flex align-items-center gap-2 btn btn-outline-secondary btn-toggle-comments">
-                                    <i class='bx bx-message-square-dots'></i> Comments
+                                <a href="" class="d-flex align-items-center gap-2 btn btn-toggle-comments" style="border: none;">
+                                    <i class='bx bx-message-square-dots'></i> Comment
                                 </a>
                             </div>
                             <!-- Comment section -->
