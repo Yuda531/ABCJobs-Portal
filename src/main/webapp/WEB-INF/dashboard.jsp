@@ -26,7 +26,7 @@
 			<div class="row">
 				<div class="col-lg-3 mb-3">
 					<div
-						class="d-flex flex-column border  rounded-3 pb-4 bg-white shadow">
+						class="d-flex flex-column border  rounded-3 pb-4 bg-white shadow sticky-custom">
 						<div
 							class="col-12 border border-light rounded-3 text-center fs-1 d-flex align-items-center justify-content-center bg-primary bg-gradient text-white"
 							style="height: 17vh; margin: 0 auto;">
@@ -152,7 +152,7 @@
 
 				<!-- suggestion to follow -->
 				<div class="col-lg-3">
-					<div class="py-1 px-1 rounded-3 border bg-white shadow">
+					<div class="py-1 px-1 rounded-3 border bg-white shadow sticky-custom">
 						<div>
 							<h5 class="text-center mt-3">Suggestions to follow</h5>
 							<hr>

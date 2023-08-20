@@ -169,7 +169,7 @@ public class DashboardController {
             model.addAttribute("error", errorMsg);
         }
 
-        return "dashboard";
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/posts")
@@ -204,7 +204,7 @@ public class DashboardController {
         String msg = "Comment added successfully";
         model.addAttribute("message", msg);
 
-        return "dashboard";
+        return "redirect:/dashboard";
     }
 
 

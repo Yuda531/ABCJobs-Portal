@@ -18,9 +18,9 @@ public class CommentThreadsService {
     @Autowired
     private CommentThreadsRepository commentRepository;
 
-    public void createComment(CommentThreads commentThreads){
+    public CommentThreads createComment(CommentThreads commentThreads){
         commentThreads.setDateComment(LocalDateTime.now());
-        commentRepository.save(commentThreads);
+        return commentRepository.save(commentThreads);
     }
 
     public List<CommentThreads> getAllComment(){

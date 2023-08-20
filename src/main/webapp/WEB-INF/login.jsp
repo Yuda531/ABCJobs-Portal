@@ -12,7 +12,7 @@
                 <div class="alert alert-danger alert-dismissible fade show my-3 ${ message == null ? "d-none" : "d-block" }" role="alert">
 			  		${ message }
 			  		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>			
+				</div>
 				<div class="alert alert-success alert-dismissible fade show my-3 ${ scMessage == null ? "d-none" : "d-block" }" role="alert">
 			  		${ scMessage }
 			  		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

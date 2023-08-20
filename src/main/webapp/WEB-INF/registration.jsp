@@ -19,6 +19,9 @@
 <body>
 	<div class="container mt-5">
 		<div class="row justify-content-center mb-5">
+		<div class="alert alert-danger ${errMsg != null ? " d-block" : "d-none" }" role="alert">
+              ${errMsg}
+            </div>
 			<div class="col-lg-6 col-md-8 col-sm-10 ">
 				<div class="text-center">
 					<h1>Let's Create Your</h1>

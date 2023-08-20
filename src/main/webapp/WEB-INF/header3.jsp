@@ -18,6 +18,12 @@
         .comment-section {
             display: none;
         }
+
+        .sticky-custom{
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+        }
     </style>
 </head>
 <body>
