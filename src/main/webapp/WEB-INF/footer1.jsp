@@ -96,19 +96,16 @@
   });
 </script>
 <script>
-  var postModal; // Untuk menyimpan referensi modal
+var postModal;
 
-  // Fungsi untuk membuka modal
-  function openPostModal() {
-    // Show the modal
-    postModal.show();
-  }
+function openPostModal() {
+  postModal.show();
+}
 
-  // Inisialisasi modal saat dokumen siap
-  document.addEventListener("DOMContentLoaded", function () {
-    // Buat modal dari elemen dengan ID 'postModal'
-    postModal = new bootstrap.Modal(document.getElementById("postModal"));
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  postModal = new bootstrap.Modal(document.getElementById("postModal"));
+});
+
 </script>
 
 <script>

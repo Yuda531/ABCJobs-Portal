@@ -54,39 +54,66 @@
 						</div>
 
 						<!-- Modal Post -->
-						<div class="modal fade" id="postModal" tabindex="-1"
-							aria-labelledby="postModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<form action="/create_thread" method="post"
-										enctype="multipart/form-data">
-										<div class="modal-header">
-											<h5 class="modal-title" id="postModalLabel">Write a
-												Thread</h5>
-											<button type="button" class="btn-close"
-												data-bs-dismiss="modal" aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											<div class="mb-3">
-												<label for="chooseImage" class="form-label">Choose
-													Image</label> <input type="file" name="imageFile"
-													class="form-control" id="chooseFile">
-											</div>
-											<div class="mb-3">
-												<label for="postBody" class="form-label">Body</label>
-												<textarea name="postBody" placeholder="What is Happening"
-													class="form-control" id="postBody" rows="4"></textarea>
-											</div>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary"
-												data-bs-dismiss="modal">Close</button>
-											<button id="postButton" type="submit" class="btn btn-primary">Post</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+                        <div
+                          class="modal fade"
+                          id="postModal"
+                          tabindex="-1"
+                          aria-labelledby="postModalLabel"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog">
+                            <div class="modal-content one">
+                              <form action="/create_thread" method="post" enctype="multipart/form-data">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="postModalLabel">Write a Thread</h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="mb-3">
+                                    <label for="chooseImage" class="form-label">Choose Image</label>
+                                    <input
+                                      type="file"
+                                      name="imageFile"
+                                      class="form-control"
+                                      id="chooseFile"
+                                    />
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="postBody" class="form-label">Body</label>
+                                    <textarea
+                                      name="postBody"
+                                      placeholder="What is Happening"
+                                      class="form-control"
+                                      id="postBody"
+                                      rows="4"
+                                    ></textarea>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Close
+                                  </button>
+                                  <button
+                                    id="postButton"
+                                    type="submit"
+                                    class="btn btn-primary"
+                                  >
+                                    Post
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
 
 					</div>
 
