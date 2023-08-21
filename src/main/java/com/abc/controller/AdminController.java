@@ -121,6 +121,18 @@ public class AdminController {
         return "redirect:/all-users";
     }
 
+    @GetMapping("/adminJobs")
+    public ModelAndView adminJobs(Model model, HttpSession session) {
+        if (session.getAttribute("roleId").toString().equals("2")) {
+            return new ModelAndView("redirect:/dashboard");
+        }
+
+        String name = ud.getDetailsById(session.getAttribute("userId").toString()).split(",")[1];
+        model.addAttribute("adminName", name);
+        return new ModelAndView("admin/adminJobs");
+
+    }
+
     private void setModel(Profile profile, Model model, HttpSession session) {
         model.addAttribute("id", profile.getId());
         model.addAttribute("f", profile.getFirstName().charAt(0));

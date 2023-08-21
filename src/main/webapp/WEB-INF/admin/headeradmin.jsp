@@ -39,16 +39,21 @@
 			<div class="collapse navbar-collapse justify-content-end"
 				id="navbarNav">
 				<ul class="navbar-nav sm-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a
-                        class=" btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4"
-                        href="../admin"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
-                    <li class="nav-item"><a
-                        class=" btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4"
-                        href="../search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></li>
-                    <li class="nav-item"><a
-                        class=" btn btn-outline-danger mx-1 rounded-pill pe-4 ps-4"
-                        href="../logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></a></li>
-                </ul>
+                                <c:choose>
+                                    <c:when test="${roleId == 1}">
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="admin"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="search"><i class="fa fa-search fa-lg"></i></a></li>
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="adminJobs"><i class="fa fa-briefcase fa-lg"></i></a></li>
+                                    </c:when>
+                                    <c:when test="${roleId == 2}">
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="dashboard"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="jobs"><i class="fa fa-briefcase fa-lg"></i></a></li>
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="profile"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a></li>
+                                        <li class="nav-item"><a class="btn btn-outline-primary mx-1 rounded-pill pe-4 ps-4" href="search"><i class="fa fa-search fa-lg"></i> </a></li>
+                                    </c:when>
+                                </c:choose>
+                                <li class="nav-item"><a class="btn btn-outline-danger mx-1 rounded-pill pe-4 ps-4" href="logout"><i class="fa fa-sign-out fa-lg"></i> </a></li>
+                            </ul>
 			</div>
 		</div>
 	</nav>

@@ -217,6 +217,19 @@ public class DashboardController {
         return "dashboard"; // Nama halaman JSP yang akan ditampilkan
     }
 
+    @GetMapping("/jobs")
+    public String jobs(HttpSession session, Model model) {
+        try {
+            setModel(model, session);
+            return "jobs";
+        } catch (Exception e) {
+            System.out.println(e);
+            String msg = "Login required";
+            model.addAttribute("message", msg);
+            return "login";
+        }
+    }
+
 
 
     private void setModel(Model model, HttpSession session) {
