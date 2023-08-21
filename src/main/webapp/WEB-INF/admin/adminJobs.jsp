@@ -87,44 +87,31 @@
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 
-					<c:forEach var="jobs" items="${getJobs}">
-						<div class="border rounded-3 mb-3 px-3 bg-white shadow">
-							<!-- Jobs header -->
-							<div class="d-flex align-items-center gap-2 py-3">
-								<span class="px-3 py-2 rounded-circle border bg-light">${jobs.getCompanyName().charAt(0)}</span>
-								<a href="#" class="text-decoration-none fs-5 fw-bold">${jobs.companyName}</a>
-								<small class="ms-auto text-secondary">${TimeAgoFormatter.format(jobs.getCreatedAt())}</small>
-							</div>
-							<!-- Jobs body -->
-							<div class="row">
-								<div class="col-2">
-									<c:if test="${not empty jobs.imageCompany}">
-										<img
-											src="data:image/jpeg;base64,${jobs.getPostImageDataBase64()}"
-											alt="Company Logo" class="img-fluid pt-3">
-									</c:if>
-								</div>
-								<div class="col-10">
-									<p class="fs-3 fw-bold text-primary">${jobs.jobsRole}</p>
-									<small class="text-secondary">${jobs.jobsLocation}</small>
-								</div>
-							</div>
-							<hr>
-							<div class="d-flex align-items-center gap-2 pb-3">
-								<a href="#"
-									class="d-flex align-items-center gap-2 btn btn-primary"
-									style="border: none;"> Apply Jobs <i
-									class='bx bx-right-top-arrow-circle bx-md'></i>
-								</a>
-							</div>
-						</div>
-					</c:forEach>
-
-
+					<c:forEach var="jobs" items="${getJobsAdmin}">
+                        <div class="border rounded-3 mb-3 px-3 bg-white shadow">
+                            <!-- Jobs header -->
+                            <div class="d-flex align-items-center gap-2 py-3">
+                                <span class="px-3 py-2 rounded-circle border bg-light">${jobs.companyName.charAt(0)}</span>
+                                <a href="#" class="text-decoration-none fs-5 fw-bold">${jobs.companyName}</a>
+                                <small class="ms-auto text-secondary">${TimeAgoFormatter.format(jobs.createdAt)}</small>
+                            </div>
+                            <!-- Jobs body -->
+                            <div class="row">
+                                <div class="col-2">
+                                    <c:if test="${not empty jobs.imageCompany}">
+                                        <img src="data:image/jpeg;base64,${jobs.postImageDataBase64}" alt="Company Logo" class="img-fluid pt-3">
+                                    </c:if>
+                                </div>
+                                <div class="col-10">
+                                    <p class="fs-3 fw-bold text-primary">${jobs.jobsRole}</p>
+                                    <small class="text-secondary">${jobs.jobsLocation}</small>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </c:forEach>
 				</div>
 			</div>
 		</div>

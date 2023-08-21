@@ -121,16 +121,20 @@ public class AdminController {
 
 
     @GetMapping("/adminJobs")
-    public ModelAndView adminJobs(Model model, HttpSession session) {
+    public String adminJobs(Model model, HttpSession session) {
         if (session.getAttribute("roleId").toString().equals("2")) {
-            return new ModelAndView("redirect:/dashboard");
+            return "redirect:/dashboard";
         }
 
         String name = ud.getDetailsById(session.getAttribute("userId").toString()).split(",")[1];
         model.addAttribute("adminName", name);
-        return new ModelAndView("admin/adminJobs");
 
+        List<Jobs> getJobsAdmin = jobsService.getAllJobs();
+        model.addAttribute("getJobsAdmin", getJobsAdmin); // Add the list of jobs to the model
+
+        return "admin/adminJobs"; // Return the view name
     }
+
 
     @PostMapping("/post-job")
     public String postJob(@ModelAttribute Jobs jobs, @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
