@@ -1,6 +1,6 @@
 package com.abc.service;
 
-import com.abc.model.Education;
+
 import com.abc.model.ForumThreads;
 import com.abc.repository.ForumThreadsRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,26 +1,21 @@
 package com.abc.controller;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.abc.model.*;
 import com.abc.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.abc.model.BulkEmail;
-import com.abc.model.Education;
-import com.abc.model.Experience;
-import com.abc.model.UserDetails;
 //import com.abc.service.BulkEmailService;
 
 import helper.Profile;
@@ -42,6 +37,9 @@ public class AdminController {
 
     @Autowired
     private ExperienceService exs;
+
+    @Autowired
+    private JobsService jobsService;
 
     @GetMapping("/admin")
     public ModelAndView index(Model model, HttpSession session) {
@@ -133,6 +131,44 @@ public class AdminController {
 
     }
 
+    @PostMapping("/post-job")
+    public String postJob(@ModelAttribute Jobs jobs, @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
+                          Model model, HttpSession session) {
+
+        Long userId = (Long) session.getAttribute("userId");
+
+        try {
+            if (imageFile != null && !imageFile.isEmpty()) {
+                jobs.setImageCompany(imageFile.getBytes());
+            }
+
+            UserDetails userDetails = ud.getDetailsById(userId);
+            jobs.setUserDetails(userDetails);
+
+            jobsService.addJobs(jobs);
+
+            String msg = "Pekerjaan berhasil diposting";
+            model.addAttribute("message", msg);
+        } catch (IOException e) {
+            String errorMsg = "Terjadi kesalahan saat mengunggah gambar.";
+            model.addAttribute("error", errorMsg);
+        }
+
+        return "redirect:/adminJobs";
+    }
+
+    @GetMapping("/getJobsAdmin")
+    public String showAllJobsAdmin(Model model) {
+        List<Jobs> getJobsAdmin = jobsService.getAllJobs(); // Ambil semua post dari service
+        model.addAttribute("getJobsAdmin", getJobsAdmin); // Kirim data post ke halaman JSP
+
+        System.out.println(getJobsAdmin);
+        return "adminJobs"; // Nama halaman JSP yang akan ditampilkan
+    }
+
+
+
+
     private void setModel(Profile profile, Model model, HttpSession session) {
         model.addAttribute("id", profile.getId());
         model.addAttribute("f", profile.getFirstName().charAt(0));
@@ -148,6 +184,9 @@ public class AdminController {
 
         model.addAttribute("ex", profile.getEx()); // Experiences[]
         model.addAttribute("ed", profile.getEd()); // Educations[]
+        model.addAttribute("jb", profile.getJb());
+
     }
+
 
 }

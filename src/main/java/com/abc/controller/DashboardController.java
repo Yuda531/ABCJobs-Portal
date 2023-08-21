@@ -37,6 +37,9 @@ public class DashboardController {
     private CommentThreadsService commentThreadsService;
 
     @Autowired
+    private JobsService jobsService;
+
+    @Autowired
     private ExperienceService experienceService;
 
     @Autowired
@@ -230,6 +233,15 @@ public class DashboardController {
         }
     }
 
+    @GetMapping("/getJobs")
+    public String showAllJobs(Model model) {
+        List<Jobs> getJobs = jobsService.getAllJobs(); // Ambil semua post dari service
+        model.addAttribute("getJobs", getJobs); // Kirim data post ke halaman JSP
+
+        System.out.println(getJobs);
+        return "jobs"; // Nama halaman JSP yang akan ditampilkan
+    }
+
 
 
     private void setModel(Model model, HttpSession session) {
@@ -250,6 +262,9 @@ public class DashboardController {
         model.addAttribute("education", educationService.getEducationByUserDetailsId(userId));
         model.addAttribute("posts",forumThreadsService.getAllPosts());
         model.addAttribute("comments", commentThreadsService.getAllComment());
+        model.addAttribute("getJobs", jobsService.getAllJobs());
+
+
 
     }
 
