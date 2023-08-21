@@ -119,6 +119,7 @@ public class AdminController {
         return "redirect:/all-users";
     }
 
+
     @GetMapping("/adminJobs")
     public ModelAndView adminJobs(Model model, HttpSession session) {
         if (session.getAttribute("roleId").toString().equals("2")) {

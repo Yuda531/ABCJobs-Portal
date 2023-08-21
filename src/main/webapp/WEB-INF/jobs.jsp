@@ -122,7 +122,7 @@
 							<div class="card-body d-flex justify-content-around">
 								<div class="col-lg-9">
 									<h4 class="card-title small">Sakura Murai</h4>
-									<span class="card-text small">UI/UX Specialist span> 
+									<span class="card-text small">UI/UX Specialist <span>
 								</div>
 								<div
 									class="col-lg-3 d-flex align-items-center justify-content-end">

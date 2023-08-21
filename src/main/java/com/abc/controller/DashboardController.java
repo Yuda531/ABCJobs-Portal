@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -263,7 +264,7 @@ public class DashboardController {
         model.addAttribute("posts",forumThreadsService.getAllPosts());
         model.addAttribute("comments", commentThreadsService.getAllComment());
         model.addAttribute("getJobs", jobsService.getAllJobs());
-
+        model.addAttribute("getJobsAdmin", jobsService.getAllJobs());
 
 
     }
