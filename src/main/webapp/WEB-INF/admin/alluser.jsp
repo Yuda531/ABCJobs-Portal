@@ -3,13 +3,16 @@
     <jsp:param value="All Users Page" name="HTMLtitle" />
 </jsp:include>
 <body>
-	
+
+	<div class="container mt-4">
+            <h1 class="text-center">List Software Programmers</h1>
+    </div>
 	<div class="container">
 		<div class="table-responsive">
-		  <table class="table table-striped table-bordered mt-4">
+		  <table class="table table-striped table-bordered table-hover mt-4">
 		    <thead>
 		      <tr>
-		        <th scope="col">#</th>
+		        <th scope="col">No.</th>
 		        <th scope="col">Full Name</th>
 		        <th scope="col">Email</th>
 		        <th scope="col">City</th>

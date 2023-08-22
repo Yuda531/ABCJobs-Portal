@@ -31,6 +31,7 @@
 					<h1>Welcome Home, ${adminName}</h1>
 					  <a href="send-bulk" class="btn btn-outline-primary">Send bulk email</a>
 					  <a href="all-users" class="btn btn-outline-primary">Show All Users</a>
+					  <a href="applicant-list" class="btn btn-outline-primary">Applicant List</a>
 				</div>
 
 				

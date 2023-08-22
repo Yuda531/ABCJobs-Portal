@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -39,6 +40,9 @@ public class DashboardController {
 
     @Autowired
     private JobsService jobsService;
+
+    @Autowired
+    private ApplyJobService applyJobService;
 
     @Autowired
     private ExperienceService experienceService;
@@ -241,6 +245,31 @@ public class DashboardController {
 
         System.out.println(getJobs);
         return "jobs"; // Nama halaman JSP yang akan ditampilkan
+    }
+
+    @PostMapping("/apply_job")
+    public String applyJob(@RequestParam("jobId") Long jobId, HttpSession session, RedirectAttributes redirectAttributes) {
+        try {
+            UserDetails userDetails = ud.getDetailsById((Long) session.getAttribute("userId"));
+            Jobs job = jobsService.getJobsById(jobId);
+
+            if (userDetails != null && job != null) {
+                ApplyJob applyJob = new ApplyJob();
+                applyJob.setUserDetails(userDetails);
+                applyJob.setJobs(job);
+                applyJob.setCreatedAt(LocalDateTime.now());
+
+                applyJobService.saveApplyJob(applyJob);
+
+                redirectAttributes.addFlashAttribute("message", "Job applied successfully!");
+            } else {
+                redirectAttributes.addFlashAttribute("error", "Error applying job.");
+            }
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error applying job.");
+        }
+
+        return "redirect:/jobs"; // Redirect kembali ke halaman jobs setelah mengajukan apply
     }
 
 

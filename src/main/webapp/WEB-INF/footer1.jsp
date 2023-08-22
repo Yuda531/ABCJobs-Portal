@@ -133,14 +133,14 @@ var jobModal;
 
 function openJobModal(jobId) {
     var job = document.getElementById('job-' + jobId);
-    var jobModal = new bootstrap.Modal(document.getElementById('jobModal'));
+    var jobModal = new bootstrap.Modal(document.getElementById('jobModal' + jobId));
 
     var companyName = job.querySelector(".text-decoration-none.fs-6.fw-bold").textContent;
     var jobRole = job.querySelector(".fs-4.fw-bold.text-primary").textContent;
     var details = job.querySelector(".modal-body p.text-justify.align-items-center").textContent;
 
-    document.getElementById('jobModalLabel').textContent = jobRole;
-    document.querySelector('.modal-body p.text-justify.align-items-center').textContent = details;
+    document.getElementById('jobModalLabel' + jobId).textContent = jobRole;
+    document.querySelector('#jobModal' + jobId + ' .modal-body p.text-justify.align-items-center').textContent = details;
 
     jobModal.show();
 }
@@ -150,6 +150,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+
+<script>
+    function applyJob(jobId) {
+        if (confirm("Are you sure you want to apply for this job?")) {
+            const formData = new FormData();
+            formData.append("jobId", jobId);
+
+            fetch("/apply_job", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Successful response
+                    alert("Job applied successfully!");
+                    location.reload();
+                } else {
+                    // Handle error response
+                    alert("Error applying for the job.");
+                }
+            })
+            .catch(error => {
+                // Handle network or fetch error
+                console.error("An error occurred:", error);
+            });
+        }
+    }
+</script>
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -164,8 +194,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-
-
 
 
 <script

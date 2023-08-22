@@ -59,24 +59,38 @@
 							</a>
 						</div>
 						<!-- Modal Details-->
-						<div class="modal fade" id="jobModal" tabindex="-1"
-							aria-labelledby="jobModalLabel" aria-hidden="true">
+						<div class="modal fade" id="jobModal${jobs.jobsId}" tabindex="-1"
+                             aria-labelledby="jobModalLabel${jobs.jobsId}" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content one">
 									<div class="modal-header">
-										<h5 class="modal-title" id="jobModalLabel">${jobs.jobsRole}</h5>
+										<h5 class="modal-title" id="jobModalLabel${jobs.jobsId}">${jobs.jobsRole}</h5>
 										<button type="button" class="btn-close"
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-										<p class="text-justify align-items-center">${jobs.details}</p>
+										<p class="text-justify align-items-center"></p>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Company
+                                                    Name:</strong> ${jobs.companyName}</li>
+                                            <li class="list-group-item"><strong>Jobs
+                                                    Location:</strong> ${jobs.jobsLocation}</li>
+                                            <li class="list-group-item"><strong>Jobs Role:</strong>
+                                                ${jobs.jobsRole}</li>
+                                            <li class="list-group-item"><strong>Posted At:</strong>
+                                                ${TimeAgoFormatter.format(jobs.createdAt)}</li>
+                                            <li class="list-group-item"><strong>Details: </strong>
+                                                ${jobs.details}</li>
+									    </ul>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">
 											Close</button>
-										<button id="applyButton" type="submit" class="btn btn-primary">
-											Apply</button>
+
+										<!-- Input hidden -->
+                                            <input type="hidden" name="jobId" value="${jobs.jobsId}" id="jobInput${jobs.jobsId}"/>
+                                            <button id="applyButton" type="submit" class="btn btn-primary" onclick="applyJob(${jobs.jobsId})">Apply</button>
 									</div>
 								</div>
 							</div>

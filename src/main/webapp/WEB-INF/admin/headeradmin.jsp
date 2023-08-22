@@ -20,6 +20,28 @@
 	<link rel="stylesheet" href="search.css">
 <title>Admin Dashboard | <%= request.getParameter("HTMLtitle") !=null ? request.getParameter("HTMLtitle")
           : "Welcome" %></title>
+
+          <style>
+              body {
+                  font-family: 'Arial', sans-serif;
+                  background-color: #f8f9fa;
+              }
+
+              h1 {
+                  color: #333;
+                  border-bottom: 2px solid #666;
+                  padding-bottom: 10px;
+              }
+
+              .table {
+                  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+              }
+
+              .btn {
+                  margin-right: 5px;  /* Beri jarak antar tombol */
+              }
+          </style>
+
 </head>
 
 <body>

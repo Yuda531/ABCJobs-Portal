@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.abc.model.*;
 import com.abc.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,9 @@ public class AdminController {
 
     @Autowired
     private JobsService jobsService;
+
+    @Autowired
+    private ApplyJobService applyJobService;
 
     @GetMapping("/admin")
     public ModelAndView index(Model model, HttpSession session) {
@@ -171,10 +175,32 @@ public class AdminController {
         return "adminJobs"; // Nama halaman JSP yang akan ditampilkan
     }
 
+    @GetMapping("/applicant-list")
+    public ModelAndView allApplicant(Model model, HttpSession session) {
+        List<ApplyJob> applicant = applyJobService.getAllApplyJobs();
+        String cd = null;
+        System.out.println("OK " + cd);
+        model.addAttribute("applicant", applicant);
+        return new ModelAndView("admin/applicantList");
+    }
+
+
+    @DeleteMapping("/delete-apply/{applyJobId}")
+    public String deleteApplyJob(@PathVariable("applyJobId") Long applyJobId, Model model) {
+        try {
+            applyJobService.deleteApplyJob(applyJobId);
+        } catch (EmptyResultDataAccessException e) {
+            model.addAttribute("error", "Apply job with ID " + applyJobId + " not found");
+        }
+        return "redirect:/applicant-list";
+    }
+
 
 
 
     private void setModel(Profile profile, Model model, HttpSession session) {
+        List<ApplyJob> applicant = applyJobService.getAllApplyJobs();
+
         model.addAttribute("id", profile.getId());
         model.addAttribute("f", profile.getFirstName().charAt(0));
         model.addAttribute("l", profile.getLastName().charAt(0));
@@ -190,6 +216,8 @@ public class AdminController {
         model.addAttribute("ex", profile.getEx()); // Experiences[]
         model.addAttribute("ed", profile.getEd()); // Educations[]
         model.addAttribute("jb", profile.getJb());
+        model.addAttribute("applicant", applicant);
+
 
     }
 
