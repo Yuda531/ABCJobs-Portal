@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
-	@Query(value = "SELECT user_details_id, first_name, last_name, city, phoneNumber FROM user_details"
+	@Query(value = "SELECT user_details_id, first_name, last_name, city, phone_number FROM user_details"
 			+ " JOIN users ON user_details.user_id = users.user_id"
 			+ " WHERE users.user_id = :userId", nativeQuery = true)
 	public String getDetailsById(@Param("userId") String userId);

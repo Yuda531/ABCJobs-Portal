@@ -49,33 +49,39 @@ public class SearchController {
 
     @PostMapping("/result") // view other profile
     public ModelAndView searchProfile(@RequestParam("uId") String uId, Model model, HttpSession session) throws Exception {
-        this.setModel(model, session, uId);
+        Long userId = Long.parseLong(uId);
+        this.setModel(model, session, userId);
         return new ModelAndView("result");
     }
 
     @GetMapping("/profileThread") // view other profile
     public ModelAndView viewProfile(@RequestParam("uId") String uId, Model model, HttpSession session) throws Exception {
-        this.setModel(model, session, uId);
+        Long userId = Long.parseLong(uId);
+        this.setModel(model, session, userId);
         return new ModelAndView("result");
     }
 
 
-    private void setModel(Model model, HttpSession session, String uId) {
-        String userId = String.valueOf(uId);
-        String[] userDetails = ud.getDetailsById(userId).replaceAll("null", "-").split(",");
-        String udID = userDetails[0];
+    private void setModel(Model model, HttpSession session, Long uId) {
+        UserDetails userAsep = ud.findById(uId);
 
-        model.addAttribute("f", userDetails[1].charAt(0));
-        model.addAttribute("l", userDetails[2].charAt(0));
 
-        model.addAttribute("firstName", userDetails[1]);
-        model.addAttribute("lastName", userDetails[2]);
 
-        model.addAttribute("fullName", userDetails[1] + " " + userDetails[2]);
-        model.addAttribute("city", userDetails[3]);
-        model.addAttribute("phoneNumber", userDetails[4]);
+        String userId = String.valueOf(userAsep.getUserDetailsId());
+//        String[] userDetails = ud.getDetailsById(userId).replaceAll("null", "-").split(",");
+//        String udID = userDetails[0];
 
-        model.addAttribute("experiences", experienceService.getExperienceByUserDetailsId(udID));
-        model.addAttribute("education", educationService.getEducationByUserDetailsId(udID));
+        model.addAttribute("f", userAsep.getFirstName().charAt(0));
+        model.addAttribute("l", userAsep.getLastName().charAt(0));
+
+        model.addAttribute("firstName", userAsep.getFirstName());
+        model.addAttribute("lastName", userAsep.getLastName());
+
+        model.addAttribute("fullName", userAsep.getFirstName() + " " + userAsep.getLastName());
+        model.addAttribute("city", userAsep.getCity());
+        model.addAttribute("phoneNumber", userAsep.getPhoneNumber());
+
+        model.addAttribute("experiences", experienceService.getExperienceByUserDetailsId(userId));
+        model.addAttribute("education", educationService.getEducationByUserDetailsId(userId));
     }
 }

@@ -67,6 +67,8 @@
 											${applyJob.userDetails.city}</li>
 										<li class="list-group-item"><strong>Email:</strong>
 											${applyJob.userDetails.user.email}</li>
+										<li class="list-group-item"><strong>Phone Number:</strong>
+                                        	${applyJob.userDetails.phoneNumber}</li>
 										<li class="list-group-item"><strong>Company
 												Name:</strong> ${applyJob.jobs.companyName}</li>
 										<li class="list-group-item"><strong>Jobs

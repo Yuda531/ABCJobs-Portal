@@ -25,6 +25,11 @@ public class UserDetailsService {
 		return repo.getDetailsById(userId);
 	}
 
+	public UserDetails findById(Long userId) {
+		return repo.findById(userId).get();
+	}
+
+
 	public UserDetails editprofile(Long userDetailsId, UserDetails ud) {
 		UserDetails userDetails = repo.findById(userDetailsId).get();
 		
